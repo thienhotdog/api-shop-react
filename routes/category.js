@@ -1,5 +1,5 @@
 import  express  from "express";
-import { add, edit, get, list, remove } from '../control/category';
+import { add, edit, filterProduct, get, list, remove } from '../control/category';
 
 const router = express.Router();
 
@@ -12,6 +12,8 @@ router.patch('/category/:slug', edit)
 router.post('/category',add)
 
 router.delete('/category/:slug',remove)
+
+router.get("/category/:id/products", filterProduct)
 
 
 module.exports = router;

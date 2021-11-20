@@ -1,5 +1,6 @@
 import Category from '../model/category';
 import slugify from 'slugify';
+import Product from '../model/product';
 
 export const list = async (req,res) =>{
     const categories = await Category.find({}).sort({ createAt: -1 }).exec();
@@ -41,4 +42,11 @@ export const remove = async (req,res) =>{
     } catch (error) {
         res.status(400).send("Create deleted failed")
     }
+}
+
+export const filterProduct = async(req,res) =>{
+    const category = await Product.find({
+      cateId: req.params.id
+    }).sort({ createAt: -1 }).exec();
+    res.json(category)
 }
