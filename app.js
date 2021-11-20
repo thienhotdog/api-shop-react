@@ -23,5 +23,6 @@ app.use(cors())
 readdirSync('./routes').map(route => app.use("/api", require(`./routes/${route}`)))
 
 const PORT = process.env.PORT || 8000;
-
-app.listen(PORT, () => console.log('server is listening port: ', PORT))
+app.listen(PORT, () => {
+    console.log(`server is listening port: ${ PORT }`);
+});
