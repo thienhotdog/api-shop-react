@@ -25,16 +25,14 @@ export const add = async (req,res) =>{
 }
 
 export const edit = async (req,res) =>{
-    const { name } = req.body;
-
+    const { name,price,img,cateId,detail } = req.body;
+   
     try {
         const product = await Product.findOneAndUpdate(
             { _id: req.params.id },
-            { name },
-            {price},
-            {cateId},
-            {img},
-            { new: true });
+            { name, price, img, cateId,detail },
+            { new: true});
+            console.log(product);
         res.json(product);
     } catch (error) {
     }
