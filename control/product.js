@@ -32,13 +32,11 @@ export const edit = async (req,res) =>{
             { _id: req.params.id },
             { name },
             {price},
-            {img},
-            {detail},
             {cateId},
+            {img},
             { new: true });
         res.json(product);
     } catch (error) {
-        console.log(error)
     }
 }
 
