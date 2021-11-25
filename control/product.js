@@ -33,6 +33,8 @@ export const edit = async (req,res) =>{
             { name },
             {price},
             {img},
+            {detail},
+            {cateId},
             { new: true });
         res.json(product);
     } catch (error) {
