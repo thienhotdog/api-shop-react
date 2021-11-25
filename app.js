@@ -16,11 +16,10 @@ mongoose.connect(process.env.DATABASE)
 // middleware
 app.use(morgan("tiny"));
 app.use(express.json());
-app.use(cors())
-
+app.use(cors());
 
 // Route
-readdirSync('./routes').map(route => app.use("/api", require(`./routes/${route}`)))
+readdirSync('./routes').map(route => app.use("/api", require(`./routes/${route}`)));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

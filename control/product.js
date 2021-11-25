@@ -31,9 +31,12 @@ export const edit = async (req,res) =>{
         const product = await Product.findOneAndUpdate(
             { _id: req.params.id },
             { name },
+            {price},
+            {img},
             { new: true });
         res.json(product);
     } catch (error) {
+        console.log(error)
     }
 }
 
