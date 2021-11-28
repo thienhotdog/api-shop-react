@@ -24,7 +24,7 @@ export const signin = async (req, res) => {
     }
    
     if(!user.authenticate(password)){
-        return res.json({
+        return res.status(400).json({
              msg: "password không đúng"
          })   
     }
