@@ -1,26 +1,33 @@
-import  mongoose  from "mongoose";
+import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema;
 const orderSchema = new mongoose.Schema({
     products: {
         type: Array,
         required: true,
     },
-    amount:{
+    amount: {
         type: Number,
         required: true,
     },
-    status:{
+    status: {
         type: String
     },
-    address:{
-        type:String
+    address: {
+        type: String,
+        required: true,
     },
-    name:{
-        type:String
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
     },
     userId: {
-         type: ObjectId,
-          ref: 'User'
+        type: ObjectId,
+        ref: 'User',
+        required: true,
     }
 }, { timestamps: true })
 
