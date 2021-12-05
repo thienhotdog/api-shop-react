@@ -7,7 +7,7 @@ export const userById = async (req, res, next, id) => {
         console.log("đay là user", user);
         next()
     } catch (error) {
-        res.status(400).json({
+        res.status(200).json({
             msg: 'User không tồn tại'
         })
     }

@@ -8,7 +8,7 @@ export const signup = async (req, res) =>{
         const user = await new User(req.body).save();
         res.json(user);
    }catch(error){
-        res.status(400).json({
+        res.status(200).json({
             message: "đã tồn tại tài khoản"
         })
    }
@@ -18,13 +18,13 @@ export const signin = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email,password }).exec();
     if (!user) {
-       return res.status(400).json({
+       return res.status(200).json({
             msg: "Tài khoản không tồn tại"
         })
     }
    
     if(!user.authenticate(password)){
-        return res.status(400).json({
+        return res.status(200).json({
              msg: "password không đúng"
          })   
     }
