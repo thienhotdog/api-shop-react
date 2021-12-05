@@ -8,7 +8,7 @@ export const signup = async (req, res) =>{
         const user = await new User(req.body).save();
         res.json(user);
    }catch(error){
-        res.status(200).json({
+        res.status(400).json({
             message: "đã tồn tại tài khoản"
         })
    }
