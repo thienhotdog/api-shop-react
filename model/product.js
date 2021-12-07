@@ -13,6 +13,9 @@ const productSchema = new mongoose.Schema({
         type: String,
        
     },
+    desc:{
+        type: String
+    },
     detail:{
         type: Boolean
        
