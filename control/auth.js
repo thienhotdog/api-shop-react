@@ -16,7 +16,7 @@ export const signup = async (req, res) =>{
 
 export const signin = async (req, res) => {
     const { email, password } = req.body;
-    const user = await User.findOne({ email,password }).exec();
+    const user = await User.findOne({ email }).exec();
     if (!user) {
        return res.status(200).json({
             msg: "Tài khoản không tồn tại"
@@ -73,7 +73,6 @@ export const isAuth = (req, res, next) => {
 
 export const isAdmin = (req, res, next) => {
     console.log(req.profile.role);
-    // nếu role == 0 ( nghĩa là quyền là member thì thông báo)
     if (req.profile.role === 0) {
         return res.status(403).json({
             msg: "Bạn không có quyền truy cập"
