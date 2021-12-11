@@ -23,3 +23,15 @@ export const add = async (req,res) =>{
         })
     }
 }
+
+export const edit = async (req,res) =>{
+    try {
+        const order = await Order.findOneAndUpdate(
+            { _id: req.params.id },
+            req.body,
+            { new: true});
+            console.log(order);
+        res.json(order);
+    } catch (error) {
+    }
+}
