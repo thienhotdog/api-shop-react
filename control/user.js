@@ -41,3 +41,16 @@ export const remove = async (req,res) =>{
         res.status(400).send("Create deleted failed")
     }
 }
+
+export const edit = async (req,res) =>{
+    const { name,img} = req.body;
+   
+    try {
+        const user = await User.findOneAndUpdate(
+            { _id: req.params.id },
+            { name, img },
+            { new: true});
+        res.json(user);
+    } catch (error) {
+    }
+}

@@ -1,12 +1,12 @@
 import express from 'express';
 import { isAdmin, isAuth, requireSignin } from '../control/auth';
-import { get, getAll, read, remove, userById } from '../control/user';
+import { edit, get, getAll, read, remove, userById } from '../control/user';
 const router = express.Router();
 
 router.get("/users", getAll);
 router.get("/user/:id",get);
 router.delete("/user/:id",remove);
-
+router.patch("/user/:id",edit);
 // Kiểm tra là admin
 router.get('/user/secret/:userId', requireSignin, isAuth, isAdmin, read);
 
