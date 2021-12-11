@@ -21,3 +21,23 @@ export const read = (req, res) => {
 
     res.json(user);
 }
+
+export const getAll = async (req,res)=>{
+    const users = await User.find({}).sort({ createAt: -1 }).exec();
+    res.json(users);
+}
+
+export const get = async (req,res) =>{
+    const user = await User.find({ _id: req.params.id }).exec();
+    res.json(user)
+}
+
+
+export const remove = async (req,res) =>{
+    try {
+        const deleted = await User.findOneAndDelete({ _id: req.params.id });
+        res.json(deleted);
+    } catch (error) {
+        res.status(400).send("Create deleted failed")
+    }
+}
